@@ -45,7 +45,7 @@ global.DATABASE = global.db // Backwards Compatibility
 
 global.conn = new WAConnection()
 conn.version =[2,2143,3]
-conn.browserDescription =['Slime-Bot', 'Deskop', '3.0']
+conn.browserDescription =['One Botz', 'Deskop', '3.0']
 let authFile = `${opts._[0] || 'session'}.data.json`
 if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['trace']) conn.logger.level = 'trace'
@@ -142,8 +142,8 @@ global.reloadHandler = function () {
               *◌  ⃝✧⪼ Deskripsi Group ミ*
   @desc`
   conn.bye = '*───[ Good Bye ]───*\n  ```Sayonara @user ! 👋```'
-  conn.spromote = '「 *PROMOTE* 」\n @user sekarang admin!'
-  conn.sdemote = '「 *DEMOTE*」\n @user sekarang bukan admin!'
+  conn.spromote = '「 *PROMOTE* 」\n @user sekarang admin\nPasti Orang Dalem :v*'
+  conn.sdemote = '「 *DEMOTE*」\n @user sekarang bukan admin\nSelamat Ya.. Kamu Turun Pangkatnya.. 🗿👍'
   conn.handler = handler.handler
   conn.onDelete = handler.delete
   conn.onParticipantsUpdate = handler.participantsUpdate
