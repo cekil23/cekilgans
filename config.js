@@ -52,8 +52,8 @@ function pickRandom(list) {
 
 global.DeveloperMode = 'false' //Buat Mode True False Moderator
 global.linkGC = ['https://chat.whatsapp.com/F9dPQcOf82Z4Dc9uxE7Kh0'] // ganti jadi group lu
-global.owner = ['6281354079196'] // Ganti jadi nomor lu ajg nanti ngechat bot lu pas sv database
-global.mods = [] // Want some help?
+global.owner = ['6282160268332','6282128475388'] // Ganti jadi nomor lu ajg nanti ngechat bot lu pas sv database
+global.mods = ['6282160268332'] // Want some help?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
@@ -89,17 +89,17 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = 'Slime'
-global.author = '۰ By Adri'
+global.packname = '𝙾𝚗𝚎 𝙱𝚘𝚝 𝚋𝚢 𝙳𝚊𝚟𝚒𝚍'
+global.author = '۰ \n\n\n\n'
 
 // silakan di ganti klo mau
-global.botwm = `🎮 SlimeBotz`//UBAH JADI NAMAMU
+global.botwm = `𝙾𝚗𝚎 𝙱𝚘𝚝 𝚋𝚢 𝙳𝚊𝚟𝚒𝚍`//UBAH JADI NAMAMU
 global.botdate = `╭──────────═┅═─────────\n│◪ ${time}\n┊◪ ${week} ${date}\n╰──────────═┅═─────────`
-global.imagebot = `https://telegra.ph/file/8212340502d985bec0e93.jpg`
+global.imagebot = `https://camo.githubusercontent.com/731b10bfd3953a64e30cda4bbca274829a645755b034dabbe38be45a0d3174f2/68747470733a2f2f777777362e666c616d696e67746578742e636f6d2f6e65742d66752f70726f78795f666f726d2e6367693f26696d6167656f75747075743d74727565267363726970743d736b657463682d6e616d6526646f5363616c653d74727565267363616c6557696474683d353030267363616c654865696768743d35303026666f6e7473697a653d3130302666696c6c54657874547970653d312666696c6c546578745061747465726e3d5761726e696e6726746578743d4f6e65253230426f747a`
 global.logo = fs.readFileSync('./src/logo3.jpg')
 global.logoowner = fs.readFileSync('./src/owner.jpg')
-global.wait = '```[ ! ] wait...```'
-global.rpg = '[ ! ] Fitur Rpg Dimatikan\nKetik *!enable* *rpg* untuk menggunakan fitur ini!\nKalo Mau main Disini aja\nhttps://chat.whatsapp.com/Hjr3H7l9iC8F2deP0cv6GT'
+global.wait = '*[ ! ] Memproses...*'
+global.rpg = '[ ! ] Fitur Rpg Dimatikan\nKetik *#enable* *rpg* untuk menggunakan fitur ini'
 global.nsfw = '[ ! ] Fitur NSFW Dimatikan\nKetik *!enable* *nsfw* untuk menggunakan fitur ini!\n“Katakanlah kepada orang laki-laki yang beriman: Hendaklah mereka menahan pandanganya, dan memelihara kemaluannya; … Katakanlah kepada wanita yang beriman: Hendaklah mereka menahan pandangannya, dan kemaluannya, dan janganlah mereka Menampakkan perhiasannya, kecuali yang (biasa) nampak dari padany,” \n(TQS. Al-Nur [24]: 30-31).'
 global.eror = '```404 error```'
 global.pref = '( # . ! /)'
