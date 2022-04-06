@@ -1,7 +1,7 @@
 <p align="center">
     <img src="https://telegra.ph/file/a5146f6e28d4400312aae.jpg" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
-<h1 align="center">Slime BOT</h1>
+<h1 align="center">ONE BOT</h1>
 
 <a href="https://github.com/Adri158/slime-wabot/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Adri158/slime-wabot?label=Forks&color=blue&style=flat-square"></a>
 <a href="https://github.com/Adri158/slime-wabot/watchers"><img title="Watchers" src="https://img.shields.io/github/watchers/Adri158/slime-wabot?label=Watchers&color=green&style=flat-square"></a>
@@ -12,6 +12,7 @@
 <a href="https://github.com/Adri158/slime-wabot/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/Adri158/slime-wabot?label=PullRequest&color=success&style=flat-square"></a>
 <a href="https://github.com/Adri158/slime-wabot/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/Adri158/slime-wabot?label=PullRequest&color=red&style=flat-square"></a>
 
+<h5>TIDAK WORK DI TERMUX</h5>
 ## FOR DEPLOY HEROKU USER
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Adri158/slime-wabot)
