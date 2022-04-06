@@ -1,42 +1,45 @@
-let moment = require('moment-timezone')
-let fetch = require('node-fetch')
-let wm = global.botwm
-let logo = global.logo
-let handler = m => m
-
-handler.all = async function (m) {
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let username = conn.getName(who)
-
-    if (m.chat.endsWith('broadcast')) return
-    if (m.fromMe) return
-    if (m.isGroup) return
-    if (db.data.settings.groupOnly) return
-    let user = global.db.data.users[m.sender]
-    if (new Date - user.pc < 86400000) return // setiap 24 jam sekali
-    await this.send3ButtonLoc(m.chat, logo, `
-*hai, ${ucapan()}*
-
-${user.banned ? 'kamu dibanned' : 'Saya adalah SLIMEBOT, salah satu bot Whatsapp. harap tidak spam/telpon/minta save kemonor ini. Ada yang bisa saya bantu? (ㆁωㆁ)'}
-`.trim(), wm, user.register ? '⋮☰ Menu' : 'Verify', user.register ? '.menu' : `.daftar ${username}.13`, 'Rules', '.rules', 'Owner', '.owner', m)
-    user.pc = new Date * 1
+let fs = require('fs')
+let handler = async function (m) {
+	const fakegrup = {
+	key : {
+fromMe: false,
+participant : '0@s.whatsapp.net',
+remoteJid: 'status@broadcast'
+},
+message: {
+locationMessage: {
+name: 'Kamu Lon\n',
+jpegThumbnail: fs.readFileSync('./src/One.jpg')
+  }
+ }
 }
+let list = []
+  for (let i of owner.map(v => v + '@s.whatsapp.net')) {
+  list.push({
+            "displayName": this.getName(i),
+            "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:${this.getName(i)}\nitem1.TEL;waid=${i.split('@')[0]}:${i.split('@')[0]}\nitem1.X-ABLabel:Seseorang\nEND:VCARD`
+          })
+  }
+        test = await this.sendMessage(m.chat, {
+        "displayName": `${list.length} Contact`,
+        "contacts": list 
+        }, 'contactsArrayMessage', { quoted: fakegrup })
+          let buttons = [
+  {buttonId: '#menu', buttonText: {displayText: 'Menu'}, type: 1},
+  {buttonId: '#donasi', buttonText: {displayText: 'Donasi'}, type: 1},
+]
+const buttonsMessage = {
+    contentText: `
+*Itu Nomor Owner Ya Ges Ya..*
+`.trim(),    footerText: ``,
+    buttons: buttons,
+  headerType: 'EMPTY'
+}
+conn.sendMessage(m.chat, buttonsMessage, 'buttonsMessage', { quoted: test})
+}
+handler.help = ['owner', 'creator']
+handler.tags = ['info']
+
+handler.command = /^(owner|creator)$/i
 
 module.exports = handler
-function ucapan() {
-    const time = moment.tz('Asia/Jakarta').format('HH')
-    res = "Selamat dinihari ☀️"
-    if (time >= 4) {
-        res = "Good Morning 🌄"
-    }
-    if (time > 10) {
-        res = "Good Afternoon ☀️"
-    }
-    if (time >= 15) {
-        res = "Good Afternoon 🌇"
-    }
-    if (time >= 18) {
-        res = "Good Night 🌙"
-    }
-    return res
-}
