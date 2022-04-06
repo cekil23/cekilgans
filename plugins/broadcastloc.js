@@ -6,7 +6,7 @@ let handler = async (m, { conn, text }) => {
     conn.reply(m.chat, `_Send a broadcast message to ${chats.length} chats_\nestimation complete ${chats.length * 1.5} seconds`, m)
     for (let id of chats) {
         await delay(1500)
-        await conn.send2ButtonLoc(id, logo,'*—「 SlimeBotz Broadcast 」—*\n' + text, wm, '⋮☰ Menu', '.menu', 'Donasi', '.donasi')
+        await conn.send2ButtonLoc(id, logo,'*—「 *Pesan Siaran Bot* 」—*\n' + text, wm, '⋮☰ Menu', '.menu', 'Owner', '.owner')
     }
     m.reply('_*Broadcast Finished*_')
 }
