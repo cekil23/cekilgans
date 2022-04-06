@@ -17,7 +17,7 @@ handler.all = async function (m, { isBlocked }) {
     try {
         if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
             await this.send2Button(m.chat,
-                isBanned ? 'Slime lagi cape (・へ・)' : banned ? 'kamu dibanned' : 'Slime disini （ ・∀・）',
+                isBanned ? 'Yah.. One lagi cape (・へ・)' : banned ? 'kamu dibanned' : 'Hai, One  disini （ ・∀・）',
                 '',
                 isBanned ? 'Unban' : banned ? 'Pemilik Bot' : '⋮☰ Menu',
                 isBanned ? '.unban' : banned ? '.owner' : '.menu',
@@ -70,7 +70,7 @@ Note: Syarat dan Ketentuan mungkin berlaku`.trim(), wm, 'Payment', '#payment', '
     if (new Date() * 1 - setting.status > 1000) {
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
-        await this.setStatus(`Im SlimeBotz 🤖 || ⏰ Aktif selama ${uptime} || 👥 User : ${Object.keys(global.db.data.users).length} User || 🎐 Mode: ${global.opts['self'] ? 'Private' : setting.groupOnly ? 'Hanya Grup' : 'Publik'}`).catch(_ => _)
+        await this.setStatus(`𝐈'𝐦 𝐎𝐧𝐞 𝐁𝐨𝐭𝐳 || ⏰ 𝐀𝐤𝐭𝐢𝐟 𝐒𝐞𝐥𝐚𝐦𝐚 ${uptime} || ${Object.keys(global.db.data.users).length} 𝐏𝐞𝐧𝐠𝐠𝐮𝐧𝐚 || 🎐 𝐌𝐨𝐝𝐞: ${global.opts['self'] ? '𝐒𝐞𝐥𝐟' : setting.groupOnly ? '𝐇𝐚𝐧𝐲𝐚 𝐆𝐫𝐮𝐩' : '𝐏𝐮𝐛𝐥𝐢𝐤'}`).catch(_ => _)
         setting.status = new Date() * 1
     }
 
