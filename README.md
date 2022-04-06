@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://telegra.ph/file/a5146f6e28d4400312aae.jpg" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
+    <img src="https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=500&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning&text=One%20Botz" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
 <h1 align="center">ONE BOT</h1>
 
