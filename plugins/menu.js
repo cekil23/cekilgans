@@ -269,7 +269,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 ┬
 ├━━━━━━━━━━━━━━━━┈─⋆
 │ ▸ *Author :* Nurutomo
-┴ ▸ *Owner :* Adri
+┴ ▸ *Owner :* David
 ✧
 ┬ 📌 𝗣𝗶𝗻𝗻𝗲𝗱 :
 │ Tolong jangan dispam ya biar ga delay
@@ -277,149 +277,149 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
      ▌│█║▌║▌║║▌║▌║█│▌
      
      ${week}, ${date}`,
-          "buttonText": "Click Here!",
+          "buttonText": "Klik Disini",
           "listType": "SINGLE_SELECT",
           "sections": [
                             {
                                 "rows": [{
                                          "title": "[📊] Status",
-                                         "description": "Status Kanna Bot",
+                                         "description": "Status One Bot",
                                          "rowId": ".botstat"
                                     }, {
                                          "title": "[⚡] Speed",
-                                         "description": "Menampilkann Kecepatan Respon Bot",
+                                         "description": "Kecepatan Merespon",
                                          "rowId": ".ping"
                                     }, {
                                          "title": "[🗒️] Info",
-                                         "description": "Menampilkan Info Bot",
+                                         "description": "Info Info One Bot",
                                          "rowId": ".info"
                                     }, {
-                                         "title": "[🎐] Creator",
-                                         "description": "Kontak Creator ku ^~^",
-                                         "rowId": ".creator"
+                                         "title": "[⏰] Runtime",
+                                         "description": "Lama Bot Aktif",
+                                         "rowId": ".runtime"
                        }],
                     "title": "✧───────────────[ Stats ]───────────────✧"
                 }, {
                   "rows": [{
                   "title": "Menu 01 |🧾|",
                   "description": "All Commands",
-                  "rowId": ".? all"
+                  "rowId": "#? all"
                 }, {
                   "title": "Menu 02 |🎮|",
                   "description": "Game",
-                  "rowId": ".? game"
+                  "rowId": "#? game"
                 }, {
                   "title": "Menu 03 |🌱|",
                   "description": "RPG",
-                  "rowId": ".? rpg"
+                  "rowId": "#? rpg"
                 }, {
                   "title": "Menu 04 |✨|",
                   "description": "Exp & limit",
-                  "rowId": ".? xp"
+                  "rowId": "#? xp"
                 }, {
                   "title": "Menu 05 |🧩|",
                   "description": "Fun",
-                  "rowId": ".? fun"
+                  "rowId": "#? fun"
                 }, {
                   "title": "Menu 06 |🎁|",
                   "description": "Gift",
-                  "rowId": ".? gift"
+                  "rowId": "#? gift"
                 }, {
                   "title": "Menu 07 |🔞|",
                   "description": "Nsfw",
-                  "rowId": ".? nsfw"
+                  "rowId": "#? nsfw"
                 }, {
                   "title": "Menu 08 |⛩️|",
                   "description": "Anime",
-                  "rowId": ".? anime"
+                  "rowId": "#? anime"
                 }, {
                   "title": "Menu 09 |📰|",
                   "description": "News",
-                  "rowId": ".? News"
+                  "rowId": "#? News"
                 },  {
                   "title": "Menu 10 |🕋|",
                   "description": "Islami",
-                  "rowId": ".? quran"
+                  "rowId": "#? quran"
                 }, {
                   "title": "Menu 11 |🏫|",
                   "description": "Edukasi",
-                  "rowId": ".? edukasi"
+                  "rowId": "#? edukasi"
                 }, {
                   "title": "Menu 12 |🖼️|",
                   "description": "Radom Image",
-                  "rowId": ".? image"
+                  "rowId": "#? image"
                 },  {
                   "title": "Menu 13 |🎫|",
                   "description": "Sticker",
-                  "rowId": ".? stiker"
+                  "rowId": "#? stiker"
                 }, {
                   "title": "Menu 14 |🐚|",
                   "description": "Kerang ajaib",
-                  "rowId": ".? kerangajaib"
+                  "rowId": "#? kerangajaib"
                 }, {
                   "title": "Menu 15 |📑|",
                   "description": "Quotes",
-                  "rowId": ".? quotes"
+                  "rowId": "#? quotes"
                 }, {
                   "title": "Menu 16 |👑|",
                   "description": "Admin Group",
-                  "rowId": ".? admin"
+                  "rowId": "#? admin"
                 }, {
                   "title": "Menu 17 |👥|",
                   "description": "Group Chat",
-                  "rowId": ".? grup"
+                  "rowId": "#? grup"
                 }, {
                   "title": "Menu 18 |🌟|",
                   "description": "Premium Users",
-                  "rowId": ".? premium"
+                  "rowId": "#? premium"
                 }, {
                   "title": "Menu 19 |💻|",
                   "description": "Internet",
-                  "rowId": ".? internet"
+                  "rowId": "#? internet"
                 }, {
                   "title": "Menu 20 |🎭|",
                   "description": "Anonymous Chat",
-                  "rowId": ".? anonymous"
+                  "rowId": "#? anonymous"
                 }, {
                   "title": "Menu 21 |✍️|",
                   "description": "Menulis & Membuat Logo",
-                  "rowId": ".? nulis"
+                  "rowId": "#? nulis"
                 }, {
                   "title": "Menu 22 |📥|",
                   "description": "Downloader",
-                  "rowId": ".? downloader"
+                  "rowId": "#? downloader"
                 }, {
                   "title": "Menu 23 |🧰|",
                   "description": "Tools",
-                  "rowId": ".? tools"
+                  "rowId": "#? tools"
                 }, {
                   "title": "Menu 24 |📂|",
                   "description": "Database",
-                  "rowId": ".? database"
+                  "rowId": "#? database"
                 }, {
                   "title": "Menu 25 |🗳️|",
                   "description": "Vote & Absen",
-                  "rowId": ".? vote"
+                  "rowId": "#? vote"
                 }, {
                   "title": "Menu 26 |🎙️|",
                   "description": "Voice Changer",
-                  "rowId": ".? audio"
+                  "rowId": "#? audio"
                 }, {
                   "title": "Menu 27 |🤖|",
                   "description": "Jadibot",
-                  "rowId": ".? jadibot"
+                  "rowId": "#? jadibot"
                 }, {
                   "title": "Menu 28 |ℹ️|",
                   "description": "Info",
-                  "rowId": ".? info"
+                  "rowId": "#? info"
                 }, {
                   "title": "Menu 29 |❓|",
                   "description": "No Category",
-                  "rowId": ".? tanpakategori"
+                  "rowId": "#? tanpakategori"
                 }, {
                   "title": "Menu 30 | 🧑‍💻|",
                   "description": "Owner",
-                  "rowId": ".? owner"
+                  "rowId": "#? owner"
                 }],
                                 "title": "✧───────────────[ Menu ]───────────────✧"
                                 }, {
@@ -442,7 +442,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                 }, {
                                 "title": "[🎖️] Thanks To",
                                 "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam bot",
-                                "rowId": ".? thnks"
+                                "rowId": "#? thnks"
                                 }],
                                 "title": "✧────────────────[ Info ]────────────────✧"
                             }
@@ -565,7 +565,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     { quoted: fkon })
   conn.relayWAMessage(res)*/
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    conn.reply(m.chat, '*Error 404*\nReason : Botnya lag bang.. jangan spam..', m)
     throw e
   }
 }
