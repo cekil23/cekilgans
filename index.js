@@ -1,17 +1,17 @@
 // lu mau lihat apa babi? mau kelahi? ayok chat gw babi https://wa.me/6281354079196
 
-console.log('🕔 SABAR YAH BABI, LAGI STARTING🗿...')
+console.log('Memulai..')
 let { spawn } = require('child_process')
 let path = require('path')
 let fs = require('fs')
 let package = require('./package.json')
 const CFonts  = require('cfonts')
-CFonts.say('Rpg\nWhatsApp Bot', {
-  font: 'chrome',
+CFonts.say('One Bot', {
+  font: 'tiny',
   align: 'center',
   gradient: ['red', 'magenta']
 })
-CFonts.say(`'${package.name}' By @${package.author.name || package.author}\nSlimeBot ver 1.5.0\nRecode By Adri`, {
+CFonts.say(`'${package.name}' By @${package.author.name || package.author}\nOne Bot ver 4.05\nRecode By David`, {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']
