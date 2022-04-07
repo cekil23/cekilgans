@@ -4,54 +4,120 @@ let fs = require('fs')
 let path = require('path')
 let fetch = require('node-fetch')
 let moment = require('moment-timezone')
+let os = require('os')
 let { performance } = require('perf_hooks')
 let neww = Math.round(performance.now())
 let old = Math.round(performance.now())
 const chats = conn.chats.all()
 const groups = chats.filter(v => v.jid.endsWith('g.us'))
+ 
 const defaultMenu = {
   before: `
-╭─────═[ *INFO PENGGUNA* ]═─────⋆
-│╭───────────────···
-┴│▸ *Name:* %name
-⬡│▸ *Premium:* %prems
-⬡│▸ *Age:* %age
-⬡│▸ *Limit:* %limit
-⬡│▸ *Money:* %money
-⬡│▸ *Role:* %role
-⬡│▸ *Level:* %level [%xp4levelup]
-⬡│▸ *Xp:* %exp / %maxexp
-┬│▸ *Total Xp:* %totalexp
-│╰────────────────···
-┠─────═[ *TODAY* ]═─────⋆
-│╭────────────────···
-┴│    *${ucapan()} %name!*
-⬡│▸ *Tanggal:* %week %weton, %date
-⬡│▸ *Tanggal Islam:* %dateIslamic
-┬│▸ *Waktu:* %time
-│╰────────────────···
-┠─────═[ *BOT INFO* ]═─────⋆
-│╭────────────────···
-┴│▸ *Nama Bot:* %me
-⬡│▸ *Mode:* ${global.opts['self'] ? 'Private' : 'Publik'}
-⬡│▸ *Prefix:* [ ! ]
-⬡│▸ *Speed:* ${neww - old} ms
-⬡│▸ *Battery:* ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
-⬡│▸ *Platform:* Unbuntu linux
-⬡│▸ *Uptime:* %uptime (%muptime)
-┬│▸ *Database:* %rtotalreg dari %totalreg
-│╰────────────────···
-╰──────────═┅═──────────
-%readmore`.trimStart(),
-  header: '╭═[ *%category* ]═────···\n┴',
-  body: '│◌ ⃝✧⪼ %cmd %islimit %isPremium',
-  footer: '┬\n╰───────────···',
-  after: `⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕.
+〓〓〓〓〓 *U S E R S*
+➺ *Name:* %name
+➺ *Tags:* %tag
+➺ *Premium:* %prems
+➺ *Age:* %age
+➺ *Limit:* %limit
+➺ *Money:* %money
+➺ *Role:* %role
+➺ *Level:* %level [%xp4levelup]
+➺ *Xp:* %exp / %maxexp
+➺ *Total Xp:* %totalexp
+
+〓〓〓〓〓  *T O D A Y* 
+➺ ${ucapan()}
+➺ *Tanggal:* %week %weton, %date
+➺ *Tanggal Islam:* %dateIslamic
+➺ *Waktu:* %time
+
+〓〓〓〓〓 *I N F O*
+➺ *Nama Bot:* %me
+➺ *Mode:* %mode
+➺ *Prefix:* [ %_p ]
+➺ *Platform:* %platform
+➺ *Merk Hp:* %merk
+➺ *Uptime:* %muptime
+➺ *Database:* %rtotalreg dari %totalreg
+
+〓〓〓〓〓 *O F F I C I A L*
+%waofc
+
+〓〓〓〓〓 *A U T H O R*
+%tq
+
+〓〓〓〓〓 *O W N E R*
+%ow
+
+〓〓〓〓〓 *M O D E R A T O R*
+%nurt
+%mds
+%par4
+%mds2
+
+〓〓〓〓〓 *P A R T N E R*
+%par
+%par2
+%par3
+%admn
+%par6
+
+〓〓〓〓〓 *G I T H U B*
+https://github.com/kannachann/kanna-wabot/
+
+〓〓〓〓〓 *I N S T A G R A M*
+https://instagram.com/ppiowy_
+
+〓〓〓〓〓 *INFO COMMAND*
+▸ *▱* = Free
+▸ *▰* = Premium
+▸ *□* = No Limit
+▸ *■* = Limit
+
+*❊╌──┈⊰᯽⊱COMMAND⊰᯽⊱┈──╌❊*
+                                       ▾
+`.trimStart(),
+  header: '╭───═ ⳹°❀❬ *%category* ❭❀° ═───···ɞ´-\n┷',
+  body: '%isPremium ◌ ⃝%islimit⪼ %cmd',
+  footer: '┯\n╰─────═┅═──────···⳹ ❋ཻུ۪۪⸙',
+  after: `⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘❙❚❙❘❙❘❙❚❙⌕.
      %me
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
-	let bzz = './audio/robot.m4a'
+	
+	//TAGS
+	let tag = `@${m.sender.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+    let waofc = `@${'0'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let ow = `@${'6289638074455'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let nurt = `@${'6281334177340'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let mds = `@${'62895336282144'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let mds2 = `@${'62887435047326'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let admn = `@${'6282195470493'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+  let par = `@${'6281354079196'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let par2 = `@${'6288286315319'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let par3 = `@${'6289646737209'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let par4 = `@${'6289638074455'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let tq = `@${'62831433937633'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ let par6 = `@${'6282298952644'.split('@')[0]}`
+ m, { contextInfo: { mentionedJid: conn.parseMention(tag) }}
+ 
+	let bzz = './audio/wibu.m4a'
+	let platform = os.platform()
+	let merk = conn.user.phone.device_manufacturer
+	let mode = global.opts['self'] ? 'Private' : 'Publik'
 	let { anon, anticall, antispam, antitroli, backup, jadibot, groupOnly, nsfw } = global.db.data.settings[conn.user.jid]
     let totaljadibot = [...new Set([...global.conns.filter(conn => conn.user && conn.state !== 'close').map(conn => conn.user)])]
 
@@ -201,10 +267,82 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     let { money, age, exp, limit, level, role, registered } = global.db.data.users[m.sender]
     let premium = global.db.data.users[m.sender].premium
     let prems = `${premium ? 'Yes': 'No'}`
-    let wm = global.botwm
-    let logo = global.logo
-    let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let name = registered ? global.db.data.users[m.sender].name : conn.getName(m.sender)
+    let wm = global.botwm
+    let datebot = global.botdate
+    let logo = global.logo
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let bioo = (await conn.getStatus(who).catch(console.error) || {}).status || ''
+
+//HITUNG MUNDUR
+    const hariRaya = new Date('January 1, 2023 23:59:59')
+    const sekarang = new Date().getTime()
+    const Selisih = hariRaya - sekarang
+    const jhari = Math.floor( Selisih / (1000 * 60 * 60 * 24));
+    const jjam = Math.floor( Selisih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const mmmenit = Math.floor( Selisih % (1000 * 60 * 60) / (1000 * 60))
+    const ddetik = Math.floor( Selisih % (1000 * 60) / 1000)
+    const hariRayaramadan = new Date('Mei 2, 2022 00:00:00')
+    const sekarangg = new Date().getTime()
+    const lebih = hariRayaramadan - sekarangg
+    const harii = Math.floor( lebih / (1000 * 60 * 60 * 24));
+    const jamm = Math.floor( lebih % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const menitt = Math.floor( lebih % (1000 * 60 * 60) / (1000 * 60))
+    const detikk = Math.floor( lebih % (1000 * 60) / 1000)
+    const ultah = new Date('may 31, 2022 23:59:59')
+    const sekarat = new Date().getTime() 
+    const Kurang = ultah - sekarat
+    const ohari = Math.floor( Kurang / (1000 * 60 * 60 * 24));
+    const ojam = Math.floor( Kurang % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const onet = Math.floor( Kurang % (1000 * 60 * 60) / (1000 * 60))
+    const detek = Math.floor( Kurang % (1000 * 60) / 1000)
+    
+    let nama = await conn.getName(m.sender)
+    let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
+
+
+  let logo2 = fs.readFileSync('./src/logo2.jpg')
+  kanna = fs.readFileSync('./src/logo3.jpg')
+  kannaImg = (await conn.prepareMessage('0@s.whatsapp.net', kanna, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
+  sumberImg = await (await fetch(fla + teks + ' menu')).buffer()
+  image = (await conn.prepareMessage('0@s.whatsapp.net', logo2, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
+  //FAKE TROLI
+    const ftrol = {
+    key : {
+    remoteJid: 'status@broadcast',
+    participant : '0@s.whatsapp.net'
+    },
+    message: {
+    orderMessage: {
+    itemCount : 2022,
+    status: 1,
+    surface : 1,
+    message: `Hai Kak ${name}!`, 
+    orderTitle: `▮Menu ▸`,
+    thumbnail: await (await fetch(fla + 'Menu')).buffer(), //Gambarnye
+    sellerJid: '0@s.whatsapp.net' 
+    }
+    }
+    }
+    const ftroli = {
+    key : {
+    remoteJid: 'status@broadcast',
+    participant : '0@s.whatsapp.net'
+    },
+    message: {
+    orderMessage: {
+    itemCount : 2022,
+    status: 1,
+    surface : 1,
+    message: `Hai Kak ${name}!`, 
+    orderTitle: `▮Menu ▸`,
+    thumbnail: await (await fetch(fla + teks)).buffer(), //Gambarnye
+    sellerJid: '0@s.whatsapp.net' 
+    }
+    }
+    }
+
+    let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let d = new Date(new Date + 3600000)
     let locale = 'id'
     // d.getTimeZoneOffset()
@@ -239,6 +377,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     }
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
+    let neww = Math.round(performance.now())
+    let old = Math.round(performance.now())
     let totalreg = Object.keys(global.db.data.users).length
     let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
     let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
@@ -251,200 +391,218 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
         enabled: !plugin.disabled,
       }
     })
+      
+    let txtmenu = `〓〓〓〓〓 *USER*
+➺ *Name:* ${name}
+➺ *Tag:* ${tag}
+➺ *Bio:* ${bioo ? bioo : ''}
+➺ *Status:* ${premium ? 'Premium' : 'Free'} User
+➺ *Limit:* ${global.db.data.users[m.sender].limit}
+
+〓〓〓〓〓 *I N F O*
+➺ *Runtime:* ${uptime}
+➺ *Baterai:* ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
+➺ *Prefix :* [ ${_p} ]
+➺ *Total User:* ${Object.keys(global.db.data.users).length}
+➺ *Jadibot:* ${totaljadibot.length}
+➺ *Blocked:* ${conn.blocklist.length}
+➺ *Chat Banned:* ${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}
+➺ *User Banned:* ${Object.entries(global.db.data.users).filter(user => user[1].banned).length}
+
+〓〓〓〓〓 *TAHUN BARU*
+➺ ${jhari} Hari ${jjam} Jam ${mmmenit} Menit ${ddetik} Detik
+
+〓〓〓〓〓 *RAMADHAN*
+➺ ${harii} Hari ${jamm} Jam ${menitt} Menit ${detikk} Detik
+
+〓〓〓〓〓 *ULANG TAHUN OWNER*
+➺ ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik
+
+✧
+┬ 📮 *Note* :
+Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada owner
+╰━━━━━━━━━━━━━┈─ɞ
+     ▌│█║▌║▌║║▌║▌║█│▌
+     
+     ${week}, ${date}`
     if (teks == '404') {
       return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
         "listMessage": {
-          "title": `✧────────···[ Dashboard ]···─────────✧`.trim(),
+          "title": `✧────··[ Dashboard ]··────✧`.trim(),
           "description": `${ucapan()}, ${name} !`.trim(),
-          "footerText": `╭━━━━━━━━━━━━━━━━┈─✧
-┴
-│⬡ Aktif selama ${uptime}
-│⬡ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
-│⬡ Prefix : [#]
-│⬡ *${Object.keys(global.db.data.users).length}* Pengguna
-│⬡ *${totaljadibot.length}* Jadibot
-│⬡ *${conn.blocklist.length}* Terblock
-│⬡ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
-│⬡ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
-┬
-├━━━━━━━━━━━━━━━━┈─⋆
-│ ▸ *Author :* Nurutomo
-┴ ▸ *Owner :* David
-✧
-┬ 📌 𝗣𝗶𝗻𝗻𝗲𝗱 :
-│ Tolong jangan dispam ya biar ga delay
-╰━━━━━━━━━━━━━━━━┈─◂
-     ▌│█║▌║▌║║▌║▌║█│▌
-     
-     ${week}, ${date}`,
-          "buttonText": "Klik Disini",
+          "footerText": txtmenu,
+          "buttonText": "Click Here!",
           "listType": "SINGLE_SELECT",
           "sections": [
                             {
                                 "rows": [{
-                                         "title": "[📊] Status",
-                                         "description": "Status One Bot",
+                                         "title": "📊 › 𐐪-〚 Status 〛-𐑂",
+                                         "description": "Status OneBotz",
                                          "rowId": ".botstat"
                                     }, {
-                                         "title": "[⚡] Speed",
-                                         "description": "Kecepatan Merespon",
+                                         "title": "⚡› 𐐪-〚 Speed 〛-𐑂",
+                                         "description": "Menampilkan Kecepatan Respon Bot",
                                          "rowId": ".ping"
                                     }, {
-                                         "title": "[🗒️] Info",
-                                         "description": "Info Info One Bot",
+                                         "title": "🗒️› 𐐪-〚 Info 〛-𐑂",
+                                         "description": "Menampilkan Info Bot",
                                          "rowId": ".info"
                                     }, {
-                                         "title": "[⏰] Runtime",
-                                         "description": "Lama Bot Aktif",
-                                         "rowId": ".runtime"
+                                         "title": "🎐 › 𐐪-〚 Creator 〛-𐑂",
+                                         "description": "Kontak Creator Ku ^~^",
+                                         "rowId": ".nowner"
+                                    }, {
+                                         "title": "❗ › 𐐪-〚 Rules 〛-𐑂",
+                                         "description": "Patuhi Rules Untuk Kenyamanan Bersama",
+                                         "rowId": ".rules"
                        }],
-                    "title": "✧───────────────[ Stats ]───────────────✧"
+                    "title": "▮𝗦𝘁𝗮𝘁𝘂𝘀 」"
                 }, {
                   "rows": [{
-                  "title": "Menu 01 |🧾|",
-                  "description": "All Commands",
-                  "rowId": "#? all"
+                  "title": "💬 〉ɞ 『 Semua Perintah 』",
+                  "description": "Memberikan Semua Fitur Bot",
+                  "rowId": ".? all"
                 }, {
-                  "title": "Menu 02 |🎮|",
-                  "description": "Game",
-                  "rowId": "#? game"
+                  "title": "🎮 〉ɞ 『 Game 』",
+                  "description": "Gamenya seru seru kak...",
+                  "rowId": ".? game"
                 }, {
-                  "title": "Menu 03 |🌱|",
-                  "description": "RPG",
-                  "rowId": "#? rpg"
+                  "title": "🌱 〉ɞ 『 Rpg 』",
+                  "description": "Game Epic Rpg ! ",
+                  "rowId": ".? rpg"
                 }, {
-                  "title": "Menu 04 |✨|",
-                  "description": "Exp & limit",
-                  "rowId": "#? xp"
+                  "title": "📈 〉ɞ 『 Exp & Limit 』",
+                  "description": "Ayo tingkatkan level mu..!",
+                  "rowId": ".? xp"
                 }, {
-                  "title": "Menu 05 |🧩|",
-                  "description": "Fun",
-                  "rowId": "#? fun"
+                  "title": "🧩 〉ɞ 『 Fun 』",
+                  "description": "Sangat Family Friendly...",
+                  "rowId": ".? fun"
                 }, {
-                  "title": "Menu 06 |🎁|",
-                  "description": "Gift",
-                  "rowId": "#? gift"
+                  "title": "🎁 〉ɞ 『 Gift 』",
+                  "description": "Suprice!",
+                  "rowId": ".? gift"
                 }, {
-                  "title": "Menu 07 |🔞|",
-                  "description": "Nsfw",
-                  "rowId": "#? nsfw"
+                  "title": "🔞 〉ɞ 『 Nsfw 』",
+                  "description": "Adick adick jangan liat ya...",
+                  "rowId": ".? nsfw"
                 }, {
-                  "title": "Menu 08 |⛩️|",
-                  "description": "Anime",
-                  "rowId": "#? anime"
+                  "title": "⛩️ 〉ɞ 『 Anime 』",
+                  "description": "Bang? Anjir wibu...",
+                  "rowId": ".? anime"
                 }, {
-                  "title": "Menu 09 |📰|",
-                  "description": "News",
-                  "rowId": "#? News"
+                  "title": "📰 〉ɞ 『 News ",
+                  "description": "Berita Doang kok kak...",
+                  "rowId": ".? News"
                 },  {
-                  "title": "Menu 10 |🕋|",
-                  "description": "Islami",
-                  "rowId": "#? quran"
+                  "title": "☪️ 〉ɞ 『 Islamic 』",
+                  "description": "Tobat Yuk Kak...",
+                  "rowId": ".? quran"
                 }, {
-                  "title": "Menu 11 |🏫|",
-                  "description": "Edukasi",
-                  "rowId": "#? edukasi"
+                  "title": "📚 〉ɞ 『 Edukasi 』",
+                  "description": "Belajar kak biar pinter",
+                  "rowId": ".? edukasi"
                 }, {
-                  "title": "Menu 12 |🖼️|",
-                  "description": "Radom Image",
-                  "rowId": "#? image"
+                  "title": "🖼️ 〉ɞ 『 Image 』",
+                  "description": "Radom Image & something...",
+                  "rowId": ".? image"
                 },  {
-                  "title": "Menu 13 |🎫|",
-                  "description": "Sticker",
-                  "rowId": "#? stiker"
+                  "title": "🎫 〉ɞ 『 Sticker 』",
+                  "description": "Membuat sticker yang unik!",
+                  "rowId": ".? stiker"
                 }, {
-                  "title": "Menu 14 |🐚|",
-                  "description": "Kerang ajaib",
-                  "rowId": "#? kerangajaib"
+                  "title": "🐚 〉ɞ 『 Kerang 』",
+                  "description": "Menurut Kerang ajaib...!",
+                  "rowId": ".? kerangajaib"
                 }, {
-                  "title": "Menu 15 |📑|",
-                  "description": "Quotes",
-                  "rowId": "#? quotes"
+                  "title": "📑 〉ɞ 『 Quotes 』",
+                  "description": "Random Teks...",
+                  "rowId": ".? quotes"
                 }, {
-                  "title": "Menu 16 |👑|",
-                  "description": "Admin Group",
-                  "rowId": "#? admin"
+                  "title": "🏛️ 〉ɞ 『  Group Settings 』",
+                  "description": "Admin Group Only!",
+                  "rowId": ".? admin"
                 }, {
-                  "title": "Menu 17 |👥|",
-                  "description": "Group Chat",
-                  "rowId": "#? grup"
+                  "title": "👥 〉ɞ 『 Group 』",
+                  "description": "Group Only!",
+                  "rowId": ".? grup"
                 }, {
-                  "title": "Menu 18 |🌟|",
-                  "description": "Premium Users",
-                  "rowId": "#? premium"
+                  "title": "🌟 〉ɞ 『 Premium 』",
+                  "description": "Premium Users Only!",
+                  "rowId": ".? premium"
                 }, {
-                  "title": "Menu 19 |💻|",
-                  "description": "Internet",
-                  "rowId": "#? internet"
+                  "title": "💻 〉ɞ 『 Internet 』",
+                  "description": "Cari Sesuatu yang menarik!",
+                  "rowId": ".? internet"
                 }, {
-                  "title": "Menu 20 |🎭|",
-                  "description": "Anonymous Chat",
-                  "rowId": "#? anonymous"
+                  "title": "🎭 〉ɞ 『 Anonymous 』",
+                  "description": "Berbicara dengan orang tidak dikenal...",
+                  "rowId": ".? anonymous"
                 }, {
-                  "title": "Menu 21 |✍️|",
-                  "description": "Menulis & Membuat Logo",
-                  "rowId": "#? nulis"
+                  "title": "🖊️ 〉ɞ 『 Editz Menu 』",
+                  "description": "Menulis dan Membuat Logo, dll...",
+                  "rowId": ".? nulis"
                 }, {
-                  "title": "Menu 22 |📥|",
-                  "description": "Downloader",
-                  "rowId": "#? downloader"
+                  "title": "📥 〉ɞ 『 Downloader 』",
+                  "description": "Download Sesuatu diBot!",
+                  "rowId": ".? downloader"
                 }, {
-                  "title": "Menu 23 |🧰|",
-                  "description": "Tools",
-                  "rowId": "#? tools"
+                  "title": "🧰 〉ɞ 『 Tools 』",
+                  "description": "Mungkin ini bisa membantu mu...",
+                  "rowId": ".? tools"
                 }, {
-                  "title": "Menu 24 |📂|",
-                  "description": "Database",
-                  "rowId": "#? database"
+                  "title": "📂 〉ɞ 『 Database 』",
+                  "description": "Menyimpan sesuatu DiBot",
+                  "rowId": ".? database"
                 }, {
-                  "title": "Menu 25 |🗳️|",
-                  "description": "Vote & Absen",
-                  "rowId": "#? vote"
+                  "title": "🗳️ 〉ɞ 『 Vote & Absen 』",
+                  "description": "Group only!",
+                  "rowId": ".? vote"
                 }, {
-                  "title": "Menu 26 |🎙️|",
-                  "description": "Voice Changer",
-                  "rowId": "#? audio"
+                  "title": "🎙️ 〉ɞ 『 Voice 』",
+                  "description": "Voice Changer...",
+                  "rowId": ".? audio"
                 }, {
-                  "title": "Menu 27 |🤖|",
-                  "description": "Jadibot",
-                  "rowId": "#? jadibot"
+                  "title": "🌐 〉ɞ 『 Multi-Session 』",
+                  "description": "Salah Satunya Jadibot",
+                  "rowId": ".? jadibot"
                 }, {
-                  "title": "Menu 28 |ℹ️|",
-                  "description": "Info",
-                  "rowId": "#? info"
+                  "title": "ℹ️ 〉ɞ 『 Info 』",
+                  "description": "Fitur fitur info...",
+                  "rowId": ".? info"
                 }, {
-                  "title": "Menu 29 |❓|",
-                  "description": "No Category",
-                  "rowId": "#? tanpakategori"
+                  "title": "❓ 〉ɞ 『 No Category 』",
+                  "description": "Fitur yang terlupakan...",
+                  "rowId": ".? tanpakategori"
                 }, {
-                  "title": "Menu 30 | 🧑‍💻|",
-                  "description": "Owner",
-                  "rowId": "#? owner"
+                  "title": "👩🏻‍💻 〉ɞ 『 Owner 』",
+                  "description": "Hanya Untuk Owner Haori",
+                  "rowId": ".? owner"
                 }],
-                                "title": "✧───────────────[ Menu ]───────────────✧"
+                                "title": "▮𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆 」"
                                 }, {
                                 "rows": [{
-                                "title": "[🗳️] Donasi",
+                                "title": "🗳️ ∫ » Donasi «",
                                 "description": "Donasi kak, jangan enak pakenya doang",
                                 "rowId": ".donasi"
                                 }, {
-                                "title": "[🔖] Sewa",
+                                "title": "🔖 ∫ » Sewa «",
                                 "description": "Menampilkan List harga sewabot",
                                 "rowId": ".sewa"
                                 }, {
-                                "title": "[🎗️] Premium",
+                                "title": "🎗️ ∫ » Premium «",
                                 "description": "Menampilkan List Harga premium",
                                 "rowId": ".premium"
                                 }, {
-                                "title": "[🔬] Script",
-                                "description": "Script Bot",
+                                "title": "🔬  ∫ » Script «",
+                                "description": "Script Yang Di Pakai Haori",
                                 "rowId": ".sc"
                                 }, {
-                                "title": "[🎖️] Thanks To",
-                                "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam bot",
-                                "rowId": "#? thnks"
+                                "title": "🎖️ ∫  » Thanks To «",
+                                "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam haoribotz",
+                                "rowId": ".? thnks"
                                 }],
-                                "title": "✧────────────────[ Info ]────────────────✧"
+                                "title": "▮𝗜𝗻𝗳𝗼 」"
                             }
                         ], "contextInfo": 
                          { "stanzaId": m.key.id,
@@ -452,9 +610,28 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                         "quotedMessage": m.message
                         }
                     }
-                 }, {}), {waitForAck: true})
+                 }, {quoted: ftrol, contextInfo: { mentionedJid: conn.parseMention(txtmenu) }}), { waitForAck: true })
   
     }
+        
+    const fload = {
+    key : {
+    remoteJid: 'status@broadcast',
+    participant : '0@s.whatsapp.net'
+    },
+    message: {
+    orderMessage: {
+    itemCount : 2022,
+    status: 1,
+    surface : 1,
+    message: '[❗] Memuat Menu ' + teks + '...', 
+    orderTitle: `▮Menu ▸`,
+    thumbnail: await (await fetch(fla + 'Loading')).buffer(), //Gambarnye
+    sellerJid: '0@s.whatsapp.net' 
+    }
+    }
+    }
+    conn.reply(m.chat, '*L o a d i n g . . .*', fload) 
     // gunakan ini jika kamu menggunakan whatsapp bisnis
     //   throw `
     // ┌〔 DAFTAR MENU 〕
@@ -504,9 +681,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
         return header.replace(/%category/g, tags[tag]) + '\n' + [
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
-              return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
-                .replace(/%isPremium/g, menu.premium ? '(Premium)' : '')
+              return body.replace(/%cmd/g, menu.prefix ? help : '%_p' + help)
+                .replace(/%islimit/g, menu.limit ? '■' : '□')
+                .replace(/%isPremium/g, menu.premium ? '▰' : '▱')
                 .trim()
             }).join('\n')
           }),
@@ -518,7 +695,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
     let replace = {
       '%': '%',
-      p: _p, uptime, muptime,
+      p: uptime, muptime,
       me: conn.user.name,
       npmname: package.name,
       npmdesc: package.description,
@@ -526,23 +703,89 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
+      
       xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      money, age, prems, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+      mds2, par6, tag, waofc, ow, mds, admn, nurt, par, par2, par3, par4, tq, jhari, jjam, mmmenit, ddetik, harii, jamm, menitt, detikk, ohari, ojam, onet, detek, mode, merk, platform, _p, money, age, prems, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role, neww, old,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    // await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), '🎮 SlimeBotz', 'Creator', '.creator', 'Donasi', '.donasi', 'Rules', '.infobot', m)
-    await conn.send3ButtonLoc(m.chat, logo, '──────────[ *DASHBOARD* ]──────────', text.trim(), 'Creator', '.creator', 'Donasi', '.donasi', 'Rules', '.rules', m)
-    let nama = await conn.getName(m.sender)
-    let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
 
-
-  logo2 = global.logo
-  kanna = fs.readFileSync('./src/logo3.jpg')
-  kannaImg = (await conn.prepareMessage('0@s.whatsapp.net', kanna, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
-  sumberImg = await (await fetch(fla + teks + ' menu')).buffer()
-  image = (await conn.prepareMessage('0@s.whatsapp.net', logo2, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
+    //MENU 3BUTTON PDF
+    await conn.sendMessage(m.chat, { "contentText": '──────────[ *DASHBOARD* ]──────────', "footerText": text,
+"buttons": [
+{buttonId: '.owner', buttonText: {displayText: 'OWNER'}, type: 1},
+{buttonId: '.donasi', buttonText: {displayText: 'DONASI'}, type: 1},
+{buttonId: '.rules', buttonText: {displayText: 'RULES'}, type: 1}
+],
+"headerType": "DOCUMENT", "documentMessage": {
+            "url": "https://mmg.whatsapp.net/d/f/AsO5KpESy9E0WI72xEVp65rx505bQxvuIma79L8Ue076.enc",
+            "mimetype": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "title": "ness.docx",
+            "fileSha256": "8Xfe3NQDhjwVjR54tkkShLDGrIFKR9QT5EsthPyxDCI=",
+            "fileLength": "99999999999999",
+            "pageCount": 100,
+            "mediaKey": "XWv4hcnpGY51qEVSO9+e+q6LYqPR3DbtT4iqS9yKhkI=",
+            "fileName": '✿.｡.:*σηє вσт*:.｡.✿',
+            "fileEncSha256": "NI9ykWUcXKquea4BmH7GgzhMb3pAeqqwE+MTFbH/Wk8=",
+            "directPath": "/v/t62.7118-24/35150115_287008086621545_8250021012380583765_n.enc?ccb=11-4&oh=6f0f730e5224c054969c276a6276a920&oe=61A21F46",
+            "mediaKeyTimestamp": "1634472176",
+            "jpegThumbnail": await (await fetch(`${logopdf()}`)).buffer(),
+  }}, 'buttonsMessage', { quoted: ftroli, contextInfo: { mentionedJid: conn.parseMention(text), forwardingScore: 999, isForwarded: true, externalAdReply: { title: global.wm, body: `${pickRandom(['udah makan belum kak?', 'udh mandi belum kak?', 'Semangat ya kak!', 'Jangan begadang mulu ya!', 'jangan spam ya kak!', 'Jangan lupa donasi yak kak! >.<', 'Jaga kesehatan yaw kak!', 'Jangan lupa makan!', 'Jangan lupa istirahat yak! >.<', 'I Love you kak >.< 💗✨', 'Pr nya udh belum kak?', 'Jangan kebanyakan main hp yk! nanti sakit :‹'])}`, description: `${pickRandom(['udah makan belum kak?', 'udh mandi belum kak?', 'Semangat ya kak!', 'Jangan begadang mulu ya!', 'jangan spam ya kak!', 'Jangan lupa donasi yak kak! >.<', 'Jaga kesehatan yaw kak!', 'Jangan lupa makan!', 'Jangan lupa istirahat yak! >.<', 'I Love you kak >.< 💗✨', 'Pr nya udh belum kak?', 'Jangan kebanyakan main hp yk! nanti sakit :‹'])}`, mediaType: 2, thumbnail: await (await fetch(`${logos()}`)).buffer(), mediaUrl: `https://youtube.com/watch?v=uIedYGN3NQQ`}}})
+  
+//MENU 3BUTTON LOCATION
+    //await conn.send3ButtonLoc(m.chat, logo, '──────────[ *DASHBOARD* ]──────────' , text.trim(), 'Owner', '.nowner', 'Donasi', '.donasi', 'Rules', '.rules', m)
+    
+  //MENU SELECTION
+    /*await conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
+        "listMessage": {
+          "title": `✧────────···[ Dashboard ]···─────────✧`.trim(),
+          "description": `🎮 Ƙαɴɴα вσт `.trim(),
+          "footerText": 
+text,
+          "buttonText": "Click Here!",
+          "listType": "SINGLE_SELECT",
+          "sections": [
+                            {
+                                "rows": [{
+                                         "title": `🔋 ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}`,
+                                         "rowId": "...."
+                                    }, {
+                                         "title": `⚡${neww - old}`,
+                                         "rowId": ".ping"
+                                    }, {
+                                         "title": `⏰ ${uptime}`,
+                                         "rowId": ".runtime"
+                       }],
+                    "title": "───────────────[ Stats ]───────────────"
+                }, {
+                	            "rows": [{
+                                "title": "Donasi",
+                                "rowId": ".donasi"
+                                }, {
+                                "title": "Sewa",
+                                "rowId": ".sewa"
+                                }, {
+                                "title": "Premium",
+                                "rowId": ".premium"
+                                }, {
+                                "title": "Script",
+                                "rowId": ".sc"
+                                }, {
+                                "title": "Owner",
+                                "rowId": ".owner"
+                                }],
+                                "title": "────────────────[ Info ]────────────────"
+                  }
+                        ], "contextInfo": 
+                         { "stanzaId": m.key.id,
+                        "participant": m.sender,
+                        "quotedMessage": m.message
+                        }
+                      }
+                     }, {}), {waitForAck: true})*/
+                     
+                     //MENU CATEGORY
   /*res = await conn.prepareMessageFromContent(m.chat, {
     "productMessage": {
       "product": {
@@ -550,7 +793,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
         "productId": "4938174216214248",
         "title": '✧───────···[ Menu ]···────────✧',
         "description": `\n${wm}\n` + text,
-        "retailerId": `${week}, ${date}  |  BY ADRI ‷♪`,
+        "retailerId": `${week}, ${date}  |  ʙʏ ʟᴇᴛᴛᴀ-sᴀᴍᴀ ‷♪`,
         "url": '\n',
         "descriptionCount": "999999999",
         "productImageCount": "1",
@@ -564,8 +807,28 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   },
     { quoted: fkon })
   conn.relayWAMessage(res)*/
+
+//MENU FAKEYOUTUBE
+    /*conn.send3ButtonImg(m.chat, await (await fetch(fla + teks)).buffer(), '──────────[ *DASHBOARD* ]──────────' , text.trim(), 'Owner', '.nowner', 'Donasi', '.donasi', 'Rules', '.rules', ftrol, {
+    quoted: m,
+    contextInfo: {
+        externalAdReply: {
+            title: global.wm,
+            body: `${pickRandom(['udah makan belum kak?', 'udh mandi belum kak?', 'Semangat ya kak!', 'Jangan begadang mulu ya!', 'jangan spam ya kak!', 'Jangan lupa donasi yak kak! >.<', 'Jaga kesehatan yaw kak!', 'Jangan lupa makan!', 'Jangan lupa istirahat yak! >.<', 'I Love you kak >.< 💗✨', 'Pr nya udh belum kak?', 'Jangan kebanyakan main hp yk! nanti sakit :‹'])}`,
+            description: `${pickRandom(['udah makan belum kak?', 'udh mandi belum kak?', 'Semangat ya kak!', 'Jangan begadang mulu ya!', 'jangan spam ya kak!', 'Jangan lupa donasi yak kak! >.<', 'Jaga kesehatan yaw kak!', 'Jangan lupa makan!', 'Jangan lupa istirahat yak! >.<', 'I Love you kak >.< 💗✨', 'Pr nya udh belum kak?', 'Jangan kebanyakan main hp yk! nanti sakit :‹'])}`,
+            mediaType: 2,
+          thumbnail: logo,
+         mediaUrl: `https://youtube.com/watch?v=uIedYGN3NQQ`
+        }
+     }
+    })*/
+
+  /*conn.sendFile(m.chat, bzz, 'wibu.m4a', null, m, true, {
+type: 'audioMessage', // paksa tanpa convert di ffmpeg
+ptt: true // true diatas ga work, sebab dipaksa tanpa convert ;v
+})*/
   } catch (e) {
-    conn.reply(m.chat, '*Error 404*\nReason : Botnya lag bang.. jangan spam..', m)
+    conn.reply(m.chat, '*Sayangnya, Sistem Bot Telah Berhenti x_x*', m)
     throw e
   }
 }
@@ -577,7 +840,7 @@ handler.mods = false
 handler.premium = false
 handler.group = false
 handler.private = false
-handler.register = true
+handler.register = false
 
 handler.admin = false
 handler.botAdmin = false
@@ -587,8 +850,47 @@ handler.exp = 3
 
 module.exports = handler
 
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)]
+}
+
 const more = String.fromCharCode(8206)
-const readMore = more.repeat(4201)
+const readMore = more.repeat(4001)
+
+function logos() {
+  const lgs = moment.tz('Asia/Jakarta').format('HH')
+  res = "Selamat dinihari"
+  if (lgs >= 4) {
+    imp = 'https://telegra.ph/file/d4cab83683334d706f843.jpg'
+  }
+  if (lgs > 10) {
+    imp = 'https://telegra.ph/file/2c7f2aeeca69db8c5c3f1.jpg'
+  }
+  if (lgs >= 15) {
+    imp = 'https://telegra.ph/file/e2a15ff63abc0b23ad897.jpg'
+  }
+  if (lgs >= 18) {
+    imp = 'https://telegra.ph/file/6dff4cd386809acce6550.jpg'
+  }
+  return imp
+}
+function logopdf() {
+  const lgs = moment.tz('Asia/Jakarta').format('HH')
+  res = "Selamat dinihari"
+  if (lgs >= 4) {
+    imp = 'https://telegra.ph/file/0c82449e94f4020c02ccc.jpg'
+  }
+  if (lgs > 10) {
+    imp = 'https://telegra.ph/file/a828df50b300881c9195b.jpg'
+  }
+  if (lgs >= 15) {
+    imp = 'https://telegra.ph/file/0da5e9c5fc3a82dff15b9.jpg'
+  }
+  if (lgs >= 18) {
+    imp = 'https://telegra.ph/file/5f2b476e7c3cda55ab05e.jpg'
+  }
+  return imp
+}
 
 function clockString(ms) {
   let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
