@@ -1,6 +1,10 @@
 // lu mau lihat apa babi? mau kelahi? ayok chat gw babi https://wa.me/6281354079196
 
 console.log('Memulai..')
+console.log('Menjalankan Server Di Port 36011..')
+console.log('Status Server : OK')
+console.log('Reading To Database..')
+
 let { spawn } = require('child_process')
 let path = require('path')
 let fs = require('fs')
@@ -16,6 +20,7 @@ CFonts.say(`'${package.name}' By @${package.author.name || package.author}\nOne 
   align: 'center',
   gradient: ['red', 'magenta']
 })
+console.log('OK.. Menjalankan.. File infex.js & main.js sedang di awasi..')
 
 var isRunning = false
 /**
