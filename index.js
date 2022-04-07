@@ -20,7 +20,7 @@ CFonts.say(`'${package.name}' By @${package.author.name || package.author}\nOne 
   align: 'center',
   gradient: ['red', 'magenta']
 })
-console.log('OK.. Menjalankan.. File infex.js & main.js sedang di awasi..')
+console.log('OK.. Menjalankan.. File index.js & main.js sedang di awasi..')
 
 var isRunning = false
 /**
