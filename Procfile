@@ -1,1 +1,1 @@
-worker: npm i @adiwajshing/baileys@3.5.3 && npm i wa-sticker-formatter && node main
+worker: npm i @adiwajshing/baileys@3.5.3 && npm i wa-sticker-formatter && node .
