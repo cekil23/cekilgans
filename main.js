@@ -1,3 +1,9 @@
+/*
+Jangan di apa apain
+nanti crash
+kalau anda jago gapapa..
+tapi kalau pemula jangan..
+*/
 require('./config.js')
 const { WAConnection: _WAConnection } = require('@adiwajshing/baileys')
 const cloudDBAdapter = require('./lib/cloudDBAdapter')
@@ -45,7 +51,7 @@ global.DATABASE = global.db // Backwards Compatibility
 
 global.conn = new WAConnection()
 conn.version =[2,2143,3]
-conn.browserDescription =['One Botz', 'Safari', '3.0']
+conn.browserDescription =['Samsung Experience', 'Opera', '3.0']
 let authFile = `${opts._[0] || 'OneBotz'}.json`
 if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['trace']) conn.logger.level = 'trace'
