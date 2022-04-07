@@ -1,4 +1,7 @@
 <p align="center">
+## Hai! Selamat Datang.
+
+
     <img src="https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=500&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning&text=One%20Botz" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
 <h1 align="center">ONE BOT</h1>
@@ -12,7 +15,6 @@
 <a href="https://github.com/Adri158/slime-wabot/pulls"><img title="Pull Request" src="https://img.shields.io/github/issues-pr/Adri158/slime-wabot?label=PullRequest&color=success&style=flat-square"></a>
 <a href="https://github.com/Adri158/slime-wabot/pulls?q=is%3Apr+is%3Aclosed"><img title="Pull Request" src="https://img.shields.io/github/issues-pr-closed/Adri158/slime-wabot?label=PullRequest&color=red&style=flat-square"></a>
 
-<h5>TIDAK WORK DI TERMUX</h5>
 ## FOR DEPLOY HEROKU USER
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Adri158/slime-wabot)
