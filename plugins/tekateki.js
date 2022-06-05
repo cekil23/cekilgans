@@ -21,7 +21,7 @@ Bonus: ${poin} XP
         await conn.send2Button(m.chat, caption, '© kannabot', 'Bantuan', `.tete`),
         json, poin,
         setTimeout(async () => {
-            if (conn.tekateki[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, '© nekobotz', 'Teka Teki', `.tekateki`, conn.tekateki[id][0])
+            if (conn.tekateki[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, '© 赤 SHINN - BOT', 'Teka Teki', `.tekateki`, conn.tekateki[id][0])
             delete conn.tekateki[id]
         }, timeout)
     ]

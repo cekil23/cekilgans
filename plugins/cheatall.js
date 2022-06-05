@@ -11,7 +11,7 @@ let handler = async (m, { conn }) => {
 handler.help = ['cheat']
 handler.tags = ['owner']
 handler.command = /^(cheat)$/i
-handler.owner = false
+handler.owner = true
 handler.mods = true
 handler.premium = false
 handler.group = false

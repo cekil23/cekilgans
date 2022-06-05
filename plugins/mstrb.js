@@ -7,7 +7,7 @@ let handler = async (m, { conn, args }) => {
   conn.sendFile(m.chat, res, 'mstrb.jpg', `wangy wangy wangy`, m, false)
 }
 handler.help = ['mstrb'].map(v => v + ' ')
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 
 handler.command = /^(mstrb)$/i
 handler.owner = false
@@ -23,4 +23,3 @@ handler.fail = null
 handler.limit = false
 
 module.exports = handler
-

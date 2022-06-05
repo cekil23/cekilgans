@@ -19,7 +19,7 @@ TOBAT TOLOLL
     })
 }
 handler.help = ['bokepic']
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 handler.command = /^(bokepic)$/i
 handler.off = false
 handler.private = false

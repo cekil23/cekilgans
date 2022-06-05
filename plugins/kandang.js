@@ -16,18 +16,18 @@ let sapi = global.db.data.users[m.sender].sapi
 let zer = `
 *—「 KANDANG 🐾 」—*
     
- *◩   ️ 🐂 = [ ${banteng} ] Ekor Banteng*
- *◩   ️ 🐅 = [ ${harimau} ] Ekor Harimau*
- *◩   ️ 🐘 = [ ${gajah} ] Ekor Gajah*
- *◩   ️ 🐐 = [ ${kambing} ] Ekor Kambing*
- *◩   ️ 🐼 = [ ${panda} ] Ekor Panda*
- *◩   ️ 🐊 = [ ${buaya} ] Ekor Buaya*
- *◩   ️ 🐃 = [ ${kerbau} ] Ekor Kerbau*
- *◩   ️ 🐮 = [ ${sapi} ] Ekor Sapi*
- *◩   ️ 🐒 = [ ${monyet} ] Ekor Monyet*
- *◩   ️ 🐗 = [ ${babihutan} ] Ekor Babi Hutan*
- *◩   ️ 🐖 = [ ${babi} ] Ekor Babi*
- *◩   ️ 🐓 = [ ${ayam} ] Ekor Ayam*
+ *▣   ️ 🐂 = [ ${banteng} ] Ekor Banteng*
+ *▣   ️ 🐅 = [ ${harimau} ] Ekor Harimau*
+ *▣   ️ 🐘 = [ ${gajah} ] Ekor Gajah*
+ *▣   ️ 🐐 = [ ${kambing} ] Ekor Kambing*
+ *▣   ️ 🐼 = [ ${panda} ] Ekor Panda*
+ *▣   ️ 🐊 = [ ${buaya} ] Ekor Buaya*
+ *▣   ️ 🐃 = [ ${kerbau} ] Ekor Kerbau*
+ *▣   ️ 🐮 = [ ${sapi} ] Ekor Sapi*
+ *▣   ️ 🐒 = [ ${monyet} ] Ekor Monyet*
+ *▣   ️ 🐗 = [ ${babihutan} ] Ekor Babi Hutan*
+ *▣   ️ 🐖 = [ ${babi} ] Ekor Babi*
+ *▣   ️ 🐓 = [ ${ayam} ] Ekor Ayam*
  `.trim()
  conn.sendButton(m.chat, zer,wm, 'Toko', '.pasar', m)
 } 

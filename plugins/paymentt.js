@@ -3,16 +3,16 @@ let handler = async (m, { conn, text }) => {
   let ext= `
 ╭═══ *〘 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 〙*
 ║ ┅ ๑————————————๑
-║┊ ⌲ *OVO* : _085712420674_ (diutamakan)
-║┊ ⌲ *DANA* : _085712420674_
-║┊ ⌲ *GOPAY* : _085712420674_
-║┊ ⌲ *INDOSAT* : _085712420674_
-║┊ ⌲ *AXIS* : _083143393763_
-║┊ ⌲ *TRI3* : _089508025343_
+║┊ ⌲ *OVO* : _088289338073_ (diutamakan)
+║┊ ⌲ *DANA* : _088289338073_
+║┊ ⌲ *GOPAY* : _088289338073_
+║┊ ⌲ *INDOSAT* : _088289338073_
+║┊ ⌲ *SMARTFREN* : _088289338073_
+║┊ ⌲ *TRI3* : _089508025343_ (❌)
 ╰═ ┅ ═══════
 ▌│█║▌║▌║║▌║▌║█│▌
 `.trim()
-conn.send3ButtonLoc(m.chat, await (await fetch(fla + 'Payment')).buffer(), ext, `${wm}`, 'Nomor Owner', '.nowner', 'Buy Premium', '.premium', 'Sewa Bot', '.sewa', m)
+conn.send3ButtonLoc(m.chat, await (await fetch(fla + 'Payment')).buffer(), ext, `${wm}`, 'Nomor Owner', '.owner', 'Buy Premium', '.premium', 'Sewa Bot', '.sewa', m)
 
 }
 handler.help = ['payment']

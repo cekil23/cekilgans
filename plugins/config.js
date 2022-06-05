@@ -50,8 +50,8 @@ function pickRandom(list) {
 }*/
 
 global.DeveloperMode = 'false' //Buat Mode True False Moderator
-global.linkGC = ['https://chat.whatsapp.com/F9dPQcOf82Z4Dc9uxE7Kh0'] // ganti jadi group lu
-global.owner = ['6281354079196', '6287735559197', '6287774166385', '628979667426'] // Put your number here
+global.linkGC = ['https://chat.whatsapp.com/ErBt4Tv6IwK2KRinzpig5v'] // ganti jadi group lu
+global.owner = ['6288289338073', '6288289338073', '6288289338073', '6288289338073'] // Put your number here
 global.mods = [] // Want some help?
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Premium user has unlimited limit
 global.APIs = { // API Prefix
@@ -88,11 +88,11 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = '®SlimeBotz'
-global.author = '۰ © Bot Adri'
+global.packname = '®赤 SHINN - BOT'
+global.author = '۰ © Bot Shinn By AxellXd'
 
 // silakan di ganti klo mau
-global.botwm = `🎮 SlimeBotz`//UBAH JADI NAMAMU
+global.botwm = `🎮 赤 SHINN - BOT`//UBAH JADI NAMAMU
 global.botdate = `╭──────────═┅═─────────\n│◪ ${time}\n┊◪ ${week} ${date}\n╰──────────═┅═─────────`
 global.imagebot = `https://telegra.ph/file/8212340502d985bec0e93.jpg`
 global.logo = fs.readFileSync('./src/logo3.jpg')

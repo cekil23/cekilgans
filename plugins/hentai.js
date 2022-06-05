@@ -7,12 +7,12 @@ let handler = async (m, { conn, args }) => {
   conn.sendFile(m.chat, res, 'hentai.jpg', `wangy wangy wangy`, m, false)
 }
 handler.help = ['hentai'].map(v => v + ' ')
-handler.tags = ['anime']
+handler.tags = ['anime', 'premium']
 
 handler.command = /^(hentai)$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 handler.group = false
 handler.private = false
 

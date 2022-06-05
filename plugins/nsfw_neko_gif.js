@@ -15,11 +15,11 @@ let handler  = async (m, { conn, text }) => {
   //if (!text) throw 'Uhm...Teksnya?'
 }
 handler.help = ['hnekogif']
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 handler.command = /^hnekogif$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 handler.group = false
 handler.private = false
 handler.limit = false 

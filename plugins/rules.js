@@ -2,16 +2,16 @@ let fetch = require('node-fetch')
 let handler = async (m, { conn }) => await conn.send2Button(m.chat, `
 ╭─────[ *RULES* ]─────✧
 ┴
-│¹ Dilarang Hina Bot / Owner
+│¹ Dilarang Satirin SHINN BOT / Owner
 │² Dilarabg Spam Command
 │³ Dilarang Kirim Virtex
 │⁴ Dilarang Spam Menu Ga Jelas
 │⁵ Dilarang Telp / Vc
 │⁶ Dilarang Culik Bot
 │⁷ Dilarang Promosi
-│⁸ Dilarang Meniru pesan Bot
+│⁸ Dilarang Meniru pesan SHINN BOT
 │⁹ Dilarang Chat Owner Ga Jelas
-│¹⁰ No plagiat
+│¹⁰ Dilarang Plagiat
 ┬
 ╰──────────···
 
@@ -28,7 +28,7 @@ ${wm}
 `.trim(), 'Harap patuhin peraturan tersebut', '⋮☰ Menu', '.menu', 'Creator', '.creator', m)
 
 handler.help = ['rules']
-handler.tags = ['info']
+handler.tags = ['info', 'main']
 
 handler.command = /^(rules|peraturan)$/i
 

@@ -8,5 +8,6 @@ handler.command = ['tagall']
 
 handler.admin = true
 handler.group = true
+handler.premium = true
 
 module.exports = handler

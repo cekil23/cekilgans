@@ -7,11 +7,11 @@ if (!db.data.chats[m.chat].nsfw && m.isGroup) throw 'Feature Nsfw Disable\nType 
    conn.sendFile(m.chat, json, 'tits.jpg', '', m, false)
 }
 handler.help = ['tits']
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 handler.command = /^tits$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 handler.group = false
 handler.private = false
 

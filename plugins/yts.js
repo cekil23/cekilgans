@@ -26,7 +26,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 `.trim()
     }
   }).filter(v => v).join('\n┄┈┈┈┈┈┈┈┈┈┈┄┈┈┈┈┈┈┈┈┈┈\n')
-  m.reply(teks)
+  conn.sendFile(m.chat, 'https://telegra.ph/file/26fab825b2a3cb2b97459.jpg', null, teks, m)
 }
 handler.help = ['', 'earch'].map(v => 'yts' + v + ' <pencarian>')
 handler.tags = ['internet']

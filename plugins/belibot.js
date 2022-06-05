@@ -27,9 +27,9 @@ let handler = async (m, { conn }) => {
 
 *[❗] Jika Group Sepi 2 minggu, bot akan leave*
 
-◪ *Jika Minat Hubungi creator kami*
-◪ *Atau Masuk Group Official Bot*
-_https://chat.whatsapp.com/F9dPQcOf82Z4Dc9uxE7Kh0_
+⫹⫺ *Jika Minat Hubungi creator kami*
+⫹⫺ *Atau Masuk Group Official Bot*
+_https://chat.whatsapp.com/GDSdQlUvcvj4tti6fROPHR_
 
 ▌│█║▌║▌║║▌║▌║█│▌
 `.trim(), `${wm}`, 'Payment', '#payment', 'Creator', '#creator', m)

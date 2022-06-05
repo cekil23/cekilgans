@@ -8,11 +8,11 @@ let Neko = new neko()
    conn.sendButton(m.chat, await (await fetch(json.img)).buffer(), json.title, '© nekobotz', '➡️ Next', `${usedPrefix + command}`, m, false)
 }
 handler.help = ['sideboobs']
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 handler.command = /^sideboobs$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 handler.group = false
 handler.private = false
 

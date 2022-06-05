@@ -14,7 +14,7 @@ let handler = async (m, { conn }) => {
     let username = conn.getName(who)
     let wm = global.botwm
     let str = `
-✧—[ *User* ]—
+┏—[ *User* ]—
 │ *Name* : ${username}
 │
 ┝─[ *Limit* 」

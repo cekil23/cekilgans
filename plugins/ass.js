@@ -7,12 +7,12 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   conn.sendButtonImg(m.chat, heum, 'wangy wangy wangy', wm, 'Next', `${usedPrefix + command}`, m)
 }
 handler.help = ['ass']
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 
 handler.command = /^(ass)$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 
 handler.admin = false
 handler.botAdmin = false
@@ -21,4 +21,3 @@ handler.fail = null
 handler.limit = false
 
 module.exports = handler
-

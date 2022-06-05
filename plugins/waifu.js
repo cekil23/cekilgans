@@ -7,9 +7,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   conn.sendButtonImg(m.chat, await (await fetch(json.url)).buffer(), 'Istri kartun', `${wm}`, 'Next', `${usedPrefix + command}`, m,)
 }
 handler.help = ['waifu']
-handler.tags = ['anime']
+handler.tags = ['anime', 'premium']
 handler.command = /^(waifu)$/i
 
 module.exports = handler
-
+handler.premium = true
 let wm = global.botwm

@@ -33,7 +33,7 @@ handler.before = async function (m) {
                         {
                         	let tag = `@${m.sender.replace(/@.+/, '')}`
                         	let mentionedJid = [m.sender]
-                                        await this.sendButtonLoc(m.chat, logo, `◪ *Name:* ${tag}\n├◆ *Role:* ${role}\n├◆ *Exp:* ${exp} xp\n╰◆ *Level:* ${before} ➠ ${user.level}\n`.trim(), wm, 'MY', '.my', m, { contextInfo: { mentionedJid }})
+                                        await this.sendButtonLoc(m.chat, logo, `  ⃝▣ *Name:* ${tag}\n├◆ *Role:* ${role}\n├◆ *Exp:* ${exp} xp\n╰◆ *Level:* ${before} ➠ ${user.level}\n`.trim(), wm, 'MY', '.my', m, { contextInfo: { mentionedJid }})
                                 }
                 }
         }

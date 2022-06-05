@@ -5,14 +5,14 @@ let handler = async (m, { conn, text }) => {
 let logo = global.logoowner
   let ext= `
 *───────[ BIODATA OWNER ]───────*
-*💌 Nama* : Adri
-*🎨 Umur* : 12
-*🧮 Kelas* : 7
-*📈 Status* : Busy
+*💌 Nama* : Axell
+*🎨 Umur* : 16
+*🧮 Kelas* : 10
+*📈 Status* : Couple
 
 *───────[ SOSIAL MEDIA ]───────*
-*📷 instagran* : none
-*🇫  Facebook* : none
+*📷 instagran* : @axellxyzz
+*🇫  Facebook* : Chiba
 *🏮 Chanel Youtube* : none
 `
 let name = await conn.getName(m.sender)
@@ -33,7 +33,7 @@ let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ?
         "descriptionCount": "999999999",
         "productImageCount": "1",
       },
-      "businessOwnerJid": "6281354079196@s.whatsapp.net",
+      "businessOwnerJid": "6288289338073@s.whatsapp.net",
       "contextInfo": {
         "forwardingScore": 9999,
         "isForwarded": false
@@ -45,7 +45,7 @@ let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ?
 
 }
 handler.help = ['bioadataowner', 'bo', 'biodata']
-handler.tags = ['info']
+handler.tags = ['info', 'main']
 handler.command = /^(biodataowner|bo|biodata)$/i
 handler.owner = false
 handler.mods = false

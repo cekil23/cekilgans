@@ -1,20 +1,27 @@
-let handler  = async (m, { conn, usedPrefix: _p }) => {
-let pp = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=Group'
-let botol = global.botwm
-let str = `
-✧─────[ *Group Official* ]─────✧
-🍀 Group 1 :
-https://chat.whatsapp.com/F9dPQcOf82Z4Dc9uxE7Kh0
-🍀 Group 2 :
-https://chat.whatsapp.com/HBHl2HD0OfBIlEKUMAum4A
-🍀 Group 3 :
-https://chat.whatsapp.com/Fh0eaf7IuuG3i67wXRC1O8
-✧──────────···──────────✧
+let fetch = require('node-fetch')
+let handler = async (m, { conn, text }) => {
+  let ext= `
+ʚ───═[ 𝗚𝗥𝗨𝗣 𝗕𝗢𝗧 ]═───ɞ
+
+https://chat.whatsapp.com/GDSdQlUvcvj4tti6fROPHR
+
+✧─────···───────✧
 `.trim()
-conn.sendButton(m.chat, str, `${botol}`, `⋮☰ Menu`, `.menu`, m)
+conn.send2ButtonLoc(m.chat, await (await fetch(fla + 'Shinn Groups')).buffer(), ext, '🎮 ꜱʜɪɴɴ 𝚋𝚘𝚝𝚣 𝙸𝚜 𝚃𝚑𝚎 𝙱𝚎𝚜𝚝', 'Siap Shinn', 'Iya', 'Owner', '.owner', m)
+
 }
-handler.help = ['gcbot']
-handler.tags = ['info']
-handler.command = /^gcbot$/i
+handler.help = ['gcbot1']
+handler.tags = ['main']
+handler.command = /^(gcbot1)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
 
 module.exports = handler

@@ -13,11 +13,11 @@ Mau langsung download? Ketik .apkdl (link tersebut)`
 	})
 }
 handler.help = ['apk (kata kunci)']
-handler.tags = ['tools']
+handler.tags = ['tools', 'premium']
 handler.command = /^(apk)$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 handler.group = false
 handler.private = false
 

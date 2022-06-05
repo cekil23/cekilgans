@@ -14,6 +14,7 @@ handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
+handler.limit = true
 
 module.exports = handler
 
@@ -58,4 +59,6 @@ global.bacot = [
 'Jangan terlalu berharap! nanti jatuhnya sakit!',
 'Ingat! Anda itu jomblo',
 'Gak tau mau ngetik apa',
+'Kamu tuh my number one jadi jangan tinggalkan aku.',
+'Affah benar kau menyukai kuu?, bohong yang benerrrr.',
 ]

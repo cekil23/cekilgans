@@ -47,7 +47,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
   let str = `
                *ℒ⃝👾 B O T  S T A T I S T I C*
                
-👨‍💻 *Owner:* wa.me/6281354079196
+👨‍💻 *Owner:* wa.me/6288289338073
 🧪 *Mode:* ${global.opts['self'] ? 'Private' : 'Publik'}
 📊 *Versi:* ${package.version}
 💻 *Platform:* Unbuntu Linux
@@ -56,7 +56,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
 🧿 *Server:* ${os.hostname()}
 🔎 *Browser:* ${conn.browserDescription[1]}
 *🏢 Hostname:* ${conn.browserDescription[0]}
-📢 *Report:* wa.me/6281354079196
+📢 *Report:* wa.me/6288289338073
 ⭕ *Prefix:* (# / ! .)
 🍃 *Speed:* ${neww - old} *ms*
 👥 *Total user:* ${totalreg} *user*
@@ -76,8 +76,8 @@ let handler  = async (m, { conn, usedPrefix }) => {
 
 *ℒ⃝💻C O N N E C T  W I T H  M E*
 
-♉ *Github:* http://github.com/Adri158
-♏ *Whatsapp:* wa.me/6281354079196
+♉ *Instagram:* https://Instagram.com/axellxyzz
+♏ *Whatsapp:* wa.me/6288289338073
 
 
 

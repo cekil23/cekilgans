@@ -8,7 +8,7 @@ let Neko = new neko()
    conn.sendFile(m.chat, json.url, 'ecchi.jpg', json.title, m, false)
 }
 handler.help = ['ecchi']
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 handler.command = /^ecchi$/i
 handler.owner = false
 handler.mods = false

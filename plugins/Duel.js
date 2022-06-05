@@ -72,7 +72,7 @@ let handler = async ( m, { conn, args, command}) => {
  }
 }
 
-handler.help = ['Duel @tag']
+handler.help = ['Duel @tag <Fitur Baru>']
 handler.tags = ['rpg']
 handler.command = /^(duel|dya|dno)/i
 handler.group = true

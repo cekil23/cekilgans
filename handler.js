@@ -1,12 +1,9 @@
-/* Mau ngapain lu ajg:)
-Jangan diedit yah anak ajg:)
-*/
-
 let fs = require('fs')
 let chalk = require('chalk')
 let util = require('util')
 let fetch = require('node-fetch')
 let simple = require('./lib/simple')
+let moment = require('moment-timezone')
 let { MessageType } = require('@adiwajshing/baileys')
 
 const isNumber = x => typeof x === 'number' && !isNaN(x)
@@ -380,7 +377,6 @@ module.exports = {
             lastdungeon: 0,
             lastduel: 0,
             lastmining: 0,
-            lastyearly: 0,
             lasthourly: 0,
             lasthunt: 0,
             lastweekly: 0,
@@ -725,8 +721,8 @@ module.exports = {
       } catch (e) {
         console.log(m, m.quoted, e)
       }
-    if (opts['autoread']) await this.chatRead(m.chat).catch(() => { })
-    this.chatRead(m.chat).catch(() => { })
+    if (opts['autoread']) 
+       await this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
     }
   },
   async participantsUpdate({ jid, participants, action }) {
@@ -746,9 +742,30 @@ module.exports = {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc) :
                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
               let wm = global.botwm
-              let wel = await (await fetch(fla + `WELCOME`)).buffer()
+              let wel = await (await fetch(fla + `HAI`)).buffer()
 
-              let lea = await (await fetch(fla + `GOOD BYE`)).buffer()
+              let lea = await (await fetch(fla + `BYE`)).buffer()
+              let wibh = moment.tz('Asia/Jakarta').format('HH')
+              let wibm = moment.tz('Asia/Jakarta').format('mm')
+              let wibs = moment.tz('Asia/Jakarta').format('ss')
+              let wktu = `${wibh} H ${wibm} M ${wibs} S`
+              const ftroli = {
+    key : {
+    remoteJid: 'status@broadcast',
+    participant : '0@s.whatsapp.net'
+    },
+    message: {
+    orderMessage: {
+    itemCount : 2022,
+    status: 1,
+    surface : 1,
+    message: `𝗧𝗜𝗠𝗘 : ${wktu}`, 
+    orderTitle: `▮Menu ▸`,
+    thumbnail: action === 'add' ? wel : lea , //Gambarnye
+    sellerJid: '0@s.whatsapp.net' 
+    }
+    }
+    }
 
 await conn.sendMessage(jid, { "contentText": action === 'add' ? '──────────[ *WELCOME* ]──────────' : '──────────[ *GOOD BYE* ]──────────' , "footerText": text,
 "buttons": [
@@ -764,11 +781,11 @@ await conn.sendMessage(jid, { "contentText": action === 'add' ? '─────
             "fileLength": "99999999999999",
             "pageCount": 100,
             "mediaKey": "XWv4hcnpGY51qEVSO9+e+q6LYqPR3DbtT4iqS9yKhkI=",
-            "fileName": 'By : Adri',
+            "fileName": 'By : AxellXyz',
             "fileEncSha256": "NI9ykWUcXKquea4BmH7GgzhMb3pAeqqwE+MTFbH/Wk8=",
             "directPath": "/v/t62.7118-24/35150115_287008086621545_8250021012380583765_n.enc?ccb=11-4&oh=6f0f730e5224c054969c276a6276a920&oe=61A21F46",
             "mediaKeyTimestamp": "1634472176",
-            "jpegThumbnail": await (await fetch('https://telegra.ph/file/8212340502d985bec0e93.jpg')).buffer(),
+            "jpegThumbnail": await (await fetch('https://telegra.ph/file/3575bc89c37faf9bb40fe.jpg')).buffer(),
   }}, 'buttonsMessage', { quoted: false, contextInfo: { mentionedJid: [user], forwardingScore: 999, isForwarded: true, externalAdReply: { title: global.wm, body: action === 'add' ? 'Selamat Datang Kak!' : 'Yahh.. kok keluar :‹', description: action === 'add' ? 'Selamat Datang Kak!' : 'Yahh.. kok keluar :‹', mediaType: 2, thumbnail: action === 'add' ? wel : lea, mediaUrl: `https://youtube.com/watch?v=uIedYGN3NQQ`}}})
               
             }
@@ -781,7 +798,7 @@ await conn.sendMessage(jid, { "contentText": action === 'add' ? '─────
         if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
         text = text.replace('@user', '@' + participants[0].split('@')[0])
         let banp = fs.readFileSync('./src/kanna.jpg')
-        if (chat.detect) this.send2ButtonLoc(jid, banp, text, '✾ 𝙾𝚗𝚎 𝙱𝚘𝚝 𝚋𝚢 𝙳𝚊𝚟𝚒𝚍 ✾', 'MENU', '#menu', 'OWNER', '#owner', null, {
+        if (chat.detect) this.send2ButtonLoc(jid, banp, text, '𝐒𝐡𝐢𝐧𝐧 вσт 🐾', 'MENU', '#menu', 'OWNER', '#owner', null, {
           contextInfo: {
             mentionedJid: this.parseMention(text)
           }
@@ -790,24 +807,16 @@ await conn.sendMessage(jid, { "contentText": action === 'add' ? '─────
     }
   },
   async delete(m) {
-    if (m.key.fromMe) return
-    let chat = global.db.data.chats[m.key.remoteJid]
-    if (chat.delete) {
-    await this.sendButton(m.key.remoteJid, `*—「 Anti Delete 」—*
-*📢 Terdeteksi Penghapusan Pesan !*
-*◇ Nama :* @${m.participant.split`@`[0]}
-*◇ Type*: ${Object.keys(m.message.message)[0]}
-*◇ Number*: ${require('awesome-phonenumber')(`+${m.participant.split`@`[0]}`).getNumber('international')}
-
-klick untuk mematikannya atau ketik #disable delete
-`.trim(), '✾ 𝙾𝚗𝚎 𝙱𝚘𝚝 𝚋𝚢 𝙳𝚊𝚟𝚒𝚍 ✾', 'DISABLE DELETE', '.disable delete', {
-      quoted: m.message,
+  let chat = global.db.data.chats[m.key.remoteJid]
+    if (chat.delete) return
+    await this.sendButton(m.key.remoteJid, `
+❗ Terdeteksi @${m.participant.split`@`[0]} telah menghapus pesan
+`.trim(), global.botdate, 'DISABLE 🔴', '.on delete', m.message, {
       contextInfo: {
         mentionedJid: [m.participant]
       }
     })
     this.copyNForward(m.key.remoteJid, m.message).catch(e => console.log(e, m))
-  }
 },
   async onCall(json) {
     let { from } = json[2][0][1]
@@ -835,16 +844,18 @@ let wm = global.botwm
 let usr = db.data.users[m.sender]
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let user = conn.getName(who)
+let tag = `@${m.sender.split('@')[0]}`
+let fot = `Made by @${'6288289338073'.split('@')[0]}`
   let msg = {
-    rowner: '[❗] Creator Only',
-    owner: '[❗] Owner Only',
-    mods: '[❗] Moderator Only',
-    premium: '[❗] Premium Only',
-    group: '[❗] Group Only',
-    private: '[❗] Private Only',
-    admin: '[❗] Admin Group Only',
-    nsfw: '[❗] Nsfw Not Active',
-    botAdmin: '[❗] Bot Admin Only'
+    rowner: '*CREATOR ONLY*',
+    owner: '*OWNER ONLY*',
+    mods: '*MODERATOR ONLY*',
+    premium: '*PREMIUM ONLY*',
+    group: '*GROUP ONLY*',
+    private: '*PRIVATE ONLY*',
+    admin: '*ADMIN ONLY*',
+    nsfw: '*NSFW NOT ACTIVE*',
+    botAdmin: '*BOT ADMIN ONLY*'
     /*unreg: `*── 「 NOT REGISTERED 」 ──*
 Halo @${m.sender.split`@`[0]} !
 Yuk Daftar Dulu Karena Anda Belum Terdaftar Dalam Database Bot
@@ -852,17 +863,317 @@ Yuk Daftar Dulu Karena Anda Belum Terdaftar Dalam Database Bot
 📍 Ketik : #daftar nama.umur
 ▸ Contoh : #daftar ${user}.13`*/
   }[type]
-  if (msg) return m.reply(msg)
-  
-  let msgg = {
-  unreg: `*── 「 NOT REGISTERED 」 ──*
-Halo kak @${syappa.replace(/@.+/, '')} !
-Yuk Daftar Dulu Karena Anda Belum Terdaftar Dalam Database Bot 🗂️
+  let des = {
+    rowner: `\nHai, ${namae} 👋\nHanya Untuk Axell - Tata Tercinta><!!`,
+    owner: `\nHai, ${namae} 👋\nHanya Untuk Axell - Tata Tercinta><!!`,
+    mods: `\nHai, ${namae} 👋\nHanya Untuk Axell - Tata Tercinta><!!`,
+    premium: `\nHai, ${namae} 👋\nFitur Ini hanya khusus user Premium!!`,
+    group: `\nHai, ${namae} 👋\nFitur Ini hanya bisa dipakai didalam group!!`,
+    private: `\nHai, ${namae} 👋\nFitur Ini hanya bisa dipakai dichat pribadi!!`,
+    admin: `\nHai, ${namae} 👋\nFitur Ini hanya khusus admin group!!`,
+    nsfw: `\nHai, ${namae} 👋\nFitur nsfw belum diaktifkan dichat ini!!`,
+    botAdmin: `\nHai, ${namae} 👋\nJadikan bot admin dulu untuk memakai fitur ini!!`
+    /*unreg: `*── 「 NOT REGISTERED 」 ──*
+Halo @${m.sender.split`@`[0]} !
+Yuk Daftar Dulu Karena Anda Belum Terdaftar Dalam Database Bot
     
-📍 *Ketik :* #daftar nama.umur
-⤿ *Contoh :* #daftar ${namae}.13`
+📍 Ketik : #daftar nama.umur
+▸ Contoh : #daftar ${user}.13`*/
+  }[type]
+  if (msg) return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
+        "listMessage": {
+          "title": msg,
+          "description": des,
+          "footerText": global.botdate,
+          "buttonText": "Shinn BOT",
+          "listType": "SINGLE_SELECT",
+          "sections": [
+                            {
+                                "rows": [{
+                                         "title": `🎀 MY OWNER`,
+                                         "description": "List Owner Shinn BOT",
+                                         "rowId": ".owner"
+                                    }, {
+                                         "title": `📛 ABOUT`,
+                                         "description": "Tentang Shinn BOT", 
+                                         "rowId": ".info"
+                                    }, {
+                                         "title": `📮 LIST MENU`,
+                                         "description": "List Menu Shinn BOT",
+                                         "rowId": ".menu"
+                                    }, {
+                                         "title": `🧿 SCRIPT`,
+                                         "description": "Source code Shinn BOT",
+                                         "rowId": ".sc"
+                                         }, {
+                                         "title": `🌸 GROUP BOT`,
+                                         "description": "List Group Official Shinn BOT",
+                                         "rowId": ".gcbot"
+                       }],
+                    "title": "Created By αхєll - chαn ♡"
+                  }
+                        ], "contextInfo": 
+                         { "stanzaId": m.key.id,
+                        "participant": m.sender,
+                        "quotedMessage": m.message
+                        }
+                      }
+                     }, {quoted: m, contexInfo: { mentionedJid: conn.parseMention(fot)}}), {waitForAck: true})
+  
+  let titreg = '╭── 「 *NOT REGISTERED* 」 ──⬣'
+  let msgg = {
+  unreg: `
+✦ Halo kak ${namae} !
+
+✦ Yuk Daftar Dulu Karena Anda Belum Terdaftar Dalam Database Bot 🗂️
+    
+📮 Silahkan Klik tombol dibawah, dan pilih umur mu!,\n\n 📛 Bisa Juga Dengan Cara Di Bawah\n╰───────────────────⬣\n╭───「 *CONTOH* 」──⬣\n✦ .daftar namamu.umurmu\n✦ .daftar Axell.18\n╰──────────────⬣`
 }[type]
-  if (msgg) return conn.sendButton(m.chat, msgg, botdate + '\n' + global.wm, 'Sign Up\n', `.daftar ${namae}.18`, m, { contextInfo: { mentionedJid: [syappa] }})
+  if (msgg) return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
+        "listMessage": {
+          "title": titreg,
+          "description": msgg,
+          "footerText": global.botdate,
+          "buttonText": "VERIFY",
+          "listType": "SINGLE_SELECT",
+          "sections": [
+          
+                            {
+
+                                "rows": [{
+
+                                         "title": "📊 › 𐐪- Status -𐑂",
+
+                                         "description": "Status Shinnbotz",
+
+                                         "rowId": ".mystat"
+
+                                    }, {
+
+                                         "title": "⚡› 𐐪- Speed -𐑂",
+
+                                         "description": "Menampilkann Kecepatan Respon Bot",
+
+                                         "rowId": ".ping"
+
+                                    }, {
+
+                                         "title": "🗒️› 𐐪- Info -𐑂",
+
+                                         "description": "Menampilkan Info Bot",
+
+                                         "rowId": ".info"
+
+                                    }, {
+
+                                         "title": "🎐 › 𐐪- Creator -𐑂",
+
+                                         "description": "Kontak Creator Ku ^~^",
+
+                                         "rowId": ".owner"
+
+                                    }, {
+
+                                         "title": "❗ › 𐐪- Rules -𐑂",
+
+                                         "description": "Patuhi Rules Untuk Kenyamanan Bersama",
+
+                                         "rowId": ".rules"
+
+                                    }, {
+
+                                         "title": "🪙 › 𐐪- Leaderboard -𐑂",
+
+                                         "description": "Cek Posisi Mu",
+
+                                         "rowId": ".lb"
+
+                       }, {
+
+                                         "title": "💌 › 𐐪- Group Bot -𐑂",
+
+                                         "description": "Join Ke Grup Official Shinnbotz",
+
+                                         "rowId": ".gcbot"
+
+                       }],
+
+                    "title": "▮𝗗𝗮𝗳𝘁𝗮𝗿 」"
+
+                }, {
+
+                  "rows": [{                               
+
+                                         "title": '27 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.27'
+
+                                    }, {
+
+                                         "title": '26 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.26'
+
+                                    }, {
+
+                                    	"title": '25 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.25'
+
+                                    }, {
+
+                                    	"title": '24 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.24'
+
+                                    }, {
+
+                                    	"title": '23 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.23'
+
+                                    }, {
+
+                                    	"title": '22 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.22'
+
+                                    }, {
+
+                                    	"title": '21 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.21'
+
+                                    }, {
+
+                                    	"title": '20 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.20'
+
+                                    }, {
+
+                                    	"title": '19 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.19'
+
+                                    }, {
+
+                                    	"title": '18 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.18'
+
+                                    }, {
+
+                                    	"title": '17 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.17'
+
+                                    }, {
+
+                                    	"title": '16 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.16'
+
+                                    }, {
+
+                                    	"title": '15 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.15'
+
+                                    }, {
+
+                                    	"title": '14 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.14'
+
+                                    }, {
+
+                                    	"title": '13 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.13'
+
+                                    }, {
+
+                                    	"title": '12 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.12'
+
+                                    }, {
+
+                                    	"title": '11 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.11'
+
+                                    }, {
+
+                                    	"title": '10 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.10'
+
+                                         }, {
+
+                                    	"title": '9 Tahun',
+                                         "description": "Shinnbotz Is The Best ❤️",
+                                         "rowId": '.daftar ' + namae + '.9'
+
+                       }],
+
+                                "title": "▮𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆 」"
+
+                                }, {
+
+                                "rows": [{
+
+                                "title": "🗳️ ∫ » Donasi «",
+
+                                "description": "Donasi kak, jangan enak pakenya doang",
+
+                                "rowId": ".donasi"
+
+                                }, {
+
+                                "title": "🎖️ ∫  » Thanks To «",
+
+                                "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam Shinnbotz",
+
+                                "rowId": ".? thnks"
+
+                                }, {
+
+                                "title": "🔖 ∫ » Sewa «",
+
+                                "description": "Menampilkan List harga sewabot",
+
+                                "rowId": ".sewa"
+
+                                }, {
+
+                                "title": "🌟 ∫ » Premium «",
+
+                                "description": "Menampilkan List Harga premium",
+
+                                "rowId": ".premium"
+
+                                }],
+
+                    "title": "Silahkan Pilih Umur Anda!"
+
+                  }
+
+                        ], "contextInfo": 
+
+                         { "stanzaId": m.key.id,
+
+                        "participant": m.sender,
+
+                        "quotedMessage": m.message
+
+                        }
+
+                      }
+
+                     }, {quoted: m, contexInfo: { mentionedJid: [syappa]}}), {waitForAck: true})
+
 }
 
 let file = require.resolve(__filename)

@@ -19,11 +19,11 @@ let handler = async(m, { conn, text }) => {
     conn.sendFile(m.chat, thumb, 'apkpure.jpg', hasil, m)
 }
 handler.help = ['apkpure'].map(v => v + ' <query>')
-handler.tags = ['tools']
+handler.tags = ['tools', 'premium']
 handler.command = /^(apkpure)$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 handler.group = false
 handler.private = false
 

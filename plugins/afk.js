@@ -11,7 +11,7 @@ conn.sendButton(m.chat, str, wm, 'Jangan Ganggu Ya !', 'iyaaaaa',m)
 conn.reply(str)
 }
 handler.help = ['afk <alasan>']
-handler.tags = ['group']
+handler.tags = ['group', 'main']
 handler.command = /^afk$/i
 
 module.exports = handler

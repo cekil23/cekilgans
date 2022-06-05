@@ -1,17 +1,17 @@
 let fetch = require('node-fetch')
 let neko = require('nekos.life')
 let Neko = new neko()
-     let handler  = async (m, { conn, args }) => {
+     let handler  = async (m, { conn, args, command, usedPrefix }) => {
 if (!db.data.chats[m.chat].nsfw && m.isGroup) throw 'Feature Nsfw Disable\nType *!enable* *nsfw* to activate this feature'
      json = (await Neko.nsfw.boobs()).url
-   conn.sendFile(m.chat, json, 'boobs.jpg', 'Wangy wangy wangy', m, false)
+   conn.sendButtonImg(m.chat, json, 'Wangy wangy wangy', global.wm, 'Next', `${usedPrefix + command}`, m)
 }
 handler.help = ['boobs','oppai', 'milf']
-handler.tags = ['hentai']
+handler.tags = ['hentai', 'premium']
 handler.command = /^(boobs|oppai|milf)$/i
 handler.owner = false
 handler.mods = false
-handler.premium = false
+handler.premium = true
 handler.group = false
 handler.private = false
 

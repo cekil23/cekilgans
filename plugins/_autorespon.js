@@ -17,7 +17,7 @@ handler.all = async function (m, { isBlocked }) {
     try {
         if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
             await this.send2Button(m.chat,
-                isBanned ? 'Yah.. One lagi cape (・へ・)' : banned ? 'kamu dibanned' : 'Hai, One  disini （ ・∀・）',
+                isBanned ? 'Yah.. Shinn lagi cape (・へ・)' : banned ? 'kamu dibanned' : 'Kenapa Kak,  Kangen ya（ ・∀・）?',
                 '',
                 isBanned ? 'Unban' : banned ? 'Pemilik Bot' : '⋮☰ Menu',
                 isBanned ? '.unban' : banned ? '.owner' : '.menu',
@@ -70,7 +70,7 @@ Note: Syarat dan Ketentuan mungkin berlaku`.trim(), wm, 'Payment', '#payment', '
     if (new Date() * 1 - setting.status > 1000) {
         let _uptime = process.uptime() * 1000
         let uptime = clockString(_uptime)
-        await this.setStatus(`𝐈'𝐦 𝐎𝐧𝐞 𝐁𝐨𝐭𝐳 || ⏰ 𝐀𝐤𝐭𝐢𝐟 𝐒𝐞𝐥𝐚𝐦𝐚 ${uptime} || ${Object.keys(global.db.data.users).length} 𝐏𝐞𝐧𝐠𝐠𝐮𝐧𝐚 || 🎐 𝐌𝐨𝐝𝐞: ${global.opts['self'] ? '𝐒𝐞𝐥𝐟' : setting.groupOnly ? '𝐇𝐚𝐧𝐲𝐚 𝐆𝐫𝐮𝐩' : '𝐏𝐮𝐛𝐥𝐢𝐤'}`).catch(_ => _)
+        await this.setStatus(`⏲️ Rʋи Ƭιмɛ ${uptime} || 🛰️ 𐌼σ∂ɛ: ${global.opts['self'] ? 'Ƥяιѵαтɛ' : setting.groupOnly ? 'Hanya Grup' : 'Ƥʋвℓικ'}`).catch(_ => _)
         setting.status = new Date() * 1
     }
 

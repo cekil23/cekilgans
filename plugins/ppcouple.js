@@ -9,8 +9,8 @@ let handler = async (m, { conn }) => {
   await conn.sendFile(m.chat, json.result.female, '', 'cewe', m)
 }
 handler.help = ['ppcouple', 'ppcp']
-handler.tags = ['internet', 'anime']
+handler.tags = ['internet', 'anime', 'premium']
 handler.command = /^(pp(cp|couple))$/i
 handler.limit = true
-
+handler.premium = true
 module.exports = handler

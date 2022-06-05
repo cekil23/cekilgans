@@ -7,8 +7,10 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   conn.sendButtonImg(m.chat, await (await fetch(json.url)).buffer(), 'Nyaa', wm, 'Next', `${usedPrefix + command}`, m,)
 }
 handler.help = ['neko']
-handler.tags = ['anime']
+handler.tags = ['anime', 'premium']
 handler.command = /^(neko)$/i
+
+handler.premium = true
 
 module.exports = handler
 

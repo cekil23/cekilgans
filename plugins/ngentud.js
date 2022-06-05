@@ -96,10 +96,10 @@ setTimeout(() => {
     } else conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage ,m )
 }
 handler.help = ['ngewe', 'ngentod', 'ngocok']
-handler.tags = ['rpg']
+handler.tags = ['rpg', 'premium']
 handler.command = /^(ngewe|ngentod|ngocok)$/i
 handler.register = true
-handler.premium = false
+handler.premium = true
 
 module.exports = handler
 let wm = global.botwm
